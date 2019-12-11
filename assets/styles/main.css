@@ -1,1 +1,10 @@
 /* In this file you can add your custom styles. */
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
