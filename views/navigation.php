@@ -16,5 +16,13 @@
     <li class="nav-item">
         <a class="nav-link" href="/login.php">Login</a>
     </li><!-- /nav-item -->
+
+    <li class="nav-item">
+        <a class="nav-link" href="app/users/logout.php">Logout</a>
+    </li><!-- /nav-item -->
+
+    <li class="nav-item">
+        <a class="nav-link" href="/profile.php">Profile</a>
+    </li><!-- /nav-item -->
   </ul><!-- /navbar-ul -->
 </nav><!-- /navbar -->
