@@ -7,6 +7,6 @@
 
 <?php if(isset($_SESSION['user'])){
       echo 'You are signed in ' . $_SESSION['user']['email'];
-    }?>
+    } ?>
 
 <?php require __DIR__.'/views/footer.php'; ?>

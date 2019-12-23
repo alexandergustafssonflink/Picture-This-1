@@ -6,12 +6,12 @@
     <form action="app/users/login.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" required>
         </div><!-- /form-group -->
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" required>
         </div><!-- /form-group -->
 
         <input type="submit" value="Login">
