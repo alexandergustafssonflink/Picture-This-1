@@ -14,4 +14,10 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 unset($user['password']);
 
+$statement=$pdo->prepare("SELECT * FROM user INNER JOIN image ON user.image_id = image_id;");
+$statement->bindParam(':imageid', $image['id'], PDO::PARAM_STR);
+$statement->bindParam(':id', $id, PDO::PARAM_STR);
+$statement->execute();
+
 $_SESSION['user'] = $user;
+

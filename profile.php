@@ -5,6 +5,8 @@ if (!isset($_SESSION['user'])){
 } else {
     require __DIR__.'/app/users/parse.php'; 
 }
+
+
 ?>
 
 
@@ -12,6 +14,7 @@ if (!isset($_SESSION['user'])){
     <h1><?php echo $config['title']; ?></h1>
     <p>Edit your account email, password and biography</p>
     <p>Upload your profile avatar image</p>
+    <img src="app/uploads/avatars/<?php echo $user['avatar'] ?>" alt="avatar image">
 </article>
 
 <main>
@@ -37,11 +40,10 @@ if (!isset($_SESSION['user'])){
         <button type="submit" class="submit-button">Submit</button>
     </form>
 
-    <form action="app/users/uploadimg.php">
-        <input type="file" name="profile-img" accept="image/*">
-        <button type="submit" class="upload-button">Upload</button>
+    <form action="app/users/upload-profile-picture.php" method="post" enctype="multipart/form-data">
         <div>
-            <img src="" alt="">
+            <input type="file" name="profile-img" accept="image/*">
+            <button type="submit" class="upload-button">Upload</button>
         </div>
     </form>
 </main>
