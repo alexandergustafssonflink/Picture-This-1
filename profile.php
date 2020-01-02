@@ -3,18 +3,14 @@
 if (!isset($_SESSION['user'])){
     redirect('/');
 } else {
-    require __DIR__.'/app/users/parse.php'; 
+    require __DIR__.'/app/parse.php';
 }
-
-
 ?>
-
 
 <article>
     <h1><?php echo $config['title']; ?></h1>
     <p>Edit your account email, password and biography</p>
     <p>Upload your profile avatar image</p>
-    <img src="app/uploads/avatars/<?php echo $user['avatar'] ?>" alt="avatar image">
 </article>
 
 <main>
@@ -42,6 +38,9 @@ if (!isset($_SESSION['user'])){
 
     <form action="app/users/upload-profile-picture.php" method="post" enctype="multipart/form-data">
         <div>
+            <?php if ($avatar['data'] !== NULL):?>
+                <img src="<?php echo"/app/users/uploads/avatars/". $avatar['data']?>" alt="avatar image">
+            <?php endif ; ?>
             <input type="file" name="profile-img" accept="image/*">
             <button type="submit" class="upload-button">Upload</button>
         </div>

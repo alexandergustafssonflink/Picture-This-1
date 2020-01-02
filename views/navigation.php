@@ -24,5 +24,9 @@
     <li class="nav-item">
         <a class="nav-link" href="/profile.php">Profile</a>
     </li><!-- /nav-item -->
+
+    <li class="nav-item">
+        <a class="nav-link" href="/create-post.php">Create post</a>
+    </li><!-- /nav-item -->
   </ul><!-- /navbar-ul -->
 </nav><!-- /navbar -->
