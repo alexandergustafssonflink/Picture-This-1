@@ -14,7 +14,7 @@
     list-style: none;
 }
 
-.nav-link, .navigation-title {
+.nav-link, .navigation-title, .nav-button {
     text-decoration: none;
     color: black;
     font-weight: 500;

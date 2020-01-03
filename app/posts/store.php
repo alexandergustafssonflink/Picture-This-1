@@ -31,9 +31,9 @@ if(isset($_FILES['post-image'])){
 
         //insert data to post table
         if(isset($_POST['description'])){
-            $statement=$pdo->prepare("INSERT INTO post (user_id, image_id, description) VALUES (:userid, :imageid, :description)");
-            $statement->bindParam(':userid', $id, PDO::PARAM_STR);
-            $statement->bindParam(':imageid', $image['id'], PDO::PARAM_STR);
+            $statement=$pdo->prepare("INSERT INTO post (user_id, image_id, description) VALUES (:userId, :imageId, :description)");
+            $statement->bindParam(':userId', $id, PDO::PARAM_STR);
+            $statement->bindParam(':imageId', $image['id'], PDO::PARAM_STR);
             $statement->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
             $statement->execute();
 
