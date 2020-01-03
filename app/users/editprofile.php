@@ -49,4 +49,4 @@ if (isset($_POST['biography'])){
     $_SESSION['user']['biography'] = $user['biography']; 
 }
 
-redirect('/profile.php');
+redirect('/account.php');

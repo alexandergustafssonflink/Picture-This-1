@@ -13,10 +13,21 @@
         <article class="feed">
 
             <?php foreach ($posts as $post): ?>
-            <?php $likes = countLikes($post['id'],$pdo) ?>
+            <?php 
+            $likes = countLikes($post['id'],$pdo);
+            $author = getUserById($post['user_id'], $pdo);
+            ?>
 
                 <div class= "post-wrapper">
                     <div class ="post-content">
+                    <form action="/profile.php" method="post">
+                        <input type="hidden" name="author_id" value="<?php echo $author['id'];?>">
+                        <button type="submit"><?php echo $author['email']?></button>
+                    </form>
+                        <button>
+                            
+                        </button>
+                       
                         <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image">
                         <p><?php echo $post['description']; ?></p>
                     </div> <!-- /post-content -->

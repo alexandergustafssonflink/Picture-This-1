@@ -13,10 +13,17 @@ $userId = (int) $_SESSION['user']['id'];
 
 
 //fetch avatar filename(data) from database and insert to variable to use in profile.php
-$statement=$pdo->prepare("SELECT data FROM user INNER JOIN image ON user.image_id = :imageid;");
-$statement->bindParam(':imageid', $user['image_id'], PDO::PARAM_STR);
-$statement->execute();
-$avatar = $statement->fetch(PDO::FETCH_ASSOC);
+function getAvatarbyId(int $imageId, PDO $pdo)
+{
+    $statement=$pdo->prepare("SELECT data FROM user INNER JOIN image ON user.image_id = image.id WHERE image.id = :imageId");
+    $statement->bindParam(':imageId', $imageId, PDO::PARAM_INT);
+    $statement->execute();
+    $avatar = $statement->fetch(PDO::FETCH_ASSOC);
+    if($avatar){
+        return $avatar;
+    }
+}
+
 
 //fetch image filename(data) and description from table image and post. Use variable in index.php
 $statement=$pdo->prepare("SELECT * FROM image INNER JOIN post ON image.id = image_id;");
@@ -34,8 +41,8 @@ function getPostById(int $userId, int $postId, PDO $pdo): array
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
-    $statement->bindParam(':userid', $userId, PDO::PARAM_STR);
-    $statement->bindParam(':postid', $postId, PDO::PARAM_STR);
+    $statement->bindParam(':userid', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':postid', $postId, PDO::PARAM_INT);
     $statement->execute();
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -50,9 +57,37 @@ function countLikes(int $postId, PDO $pdo): int
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
-    $statement->bindParam(':postId', $postId, PDO::PARAM_STR);
+    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
     $statement->execute();
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
 
     return (int)$likes['COUNT(*)'];
+}
+
+function getUserById(int $userId, PDO $pdo): array
+{
+    $statement=$pdo->prepare('SELECT * FROM user WHERE id = :userid');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':userid', $userId, PDO::PARAM_INT);
+    $statement->execute();
+    $author = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if($author){
+        return $author;
+    }
+}
+
+function countFollowers(int $chosenUserId, PDO $pdo): int
+{
+    $statement=$pdo->prepare('SELECT COUNT(*) FROM follow WHERE user_id_1 = :userId');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':userId', $chosenUserId, PDO::PARAM_INT);
+    $statement->execute();
+    $followers = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return (int)$followers['COUNT(*)'];
 }

@@ -11,6 +11,7 @@ require __DIR__.'/../app/autoload.php';
     <title><?php echo $config['title']; ?></title>
     <link rel="normalize" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/feed.css">
     <link rel="stylesheet" href="/assets/styles/navigation.css">
     <link rel="stylesheet" href="/assets/styles/navbar-not-logged-in.css">
 </head>

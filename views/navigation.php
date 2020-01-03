@@ -13,13 +13,13 @@
 <?php else: ?>
 <nav class="navbar">
     <a class="navigation-title" href="/index.php"><?php echo $config['title']; ?></a>
-    <ul class="navbar-logged-in">
+    <ul class="navbar">
     <li class="nav-item">
         <a class="nav-link" href="app/users/logout.php">Logout</a>
     </li><!-- /nav-item -->
 
     <li class="nav-item">
-        <a class="nav-link" href="/profile.php">Profile</a>
+        <a class="nav-link" href="/account.php">Account</a>
     </li><!-- /nav-item -->
 
     <li class="nav-item">

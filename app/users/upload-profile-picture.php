@@ -34,6 +34,6 @@ if($_SESSION['user']){
         $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();
         
-        redirect('/profile.php');
+        redirect('/account.php');
     }
 } 
