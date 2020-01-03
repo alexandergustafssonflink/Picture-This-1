@@ -42,5 +42,17 @@ function getPostById(int $userId, int $postId, PDO $pdo): array
     if($post){
         return $post;
     }
-    return $post = [];
+}
+
+function countLikes(int $postId, PDO $pdo): int
+{
+    $statement=$pdo->prepare('SELECT COUNT(*) FROM like WHERE post_id = :postId');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':postId', $postId, PDO::PARAM_STR);
+    $statement->execute();
+    $likes = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return (int)$likes['COUNT(*)'];
 }
