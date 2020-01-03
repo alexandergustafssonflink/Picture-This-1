@@ -3,7 +3,6 @@
 <article>
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
-    <p><?php echo $_SESSION['error']; ?></p>
 </article>
 
 <?php if(isset($_SESSION['user'])):?>

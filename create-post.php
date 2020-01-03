@@ -13,7 +13,7 @@ if (!isset($_SESSION['user'])){
 <article>
     <form action="app/posts/store.php" method="post" enctype="multipart/form-data">
         <div>
-            <input type="file" name="post-img" accept="image/*">
+            <input type="file" name="post-image" accept="image/*">
         </div>
         <div>
             <label for="description">Description</label>

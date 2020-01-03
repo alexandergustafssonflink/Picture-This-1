@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if(isset($_FILES['post-img'])){
-    if($_FILES['post-img']['size'] < 3145728){
+if(isset($_FILES['post-image'])){
+    if($_FILES['post-image']['error'] === 0){
     //array storing name, type, tmp_name, error and size about uploaded file
-    $postImage = $_FILES['post-img'];
+    $postImage = $_FILES['post-image'];
     $id = $_SESSION['user']['id'];
 
     //create a unique fileName, ends with type jpg or other
@@ -24,10 +24,10 @@ if(isset($_FILES['post-img'])){
     $statement->bindParam(':filename', $fileName, PDO::PARAM_STR);
     $statement->execute();
         
-        //fetch the latest inserted image
-        $stmnt=$pdo->prepare("SELECT * FROM image ORDER BY ID DESC LIMIT 1");
-        $stmnt->execute();
-        $image=$stmnt->fetch(PDO::FETCH_ASSOC);
+    //fetch the latest inserted image
+    $stmnt=$pdo->prepare("SELECT * FROM image ORDER BY ID DESC LIMIT 1");
+    $stmnt->execute();
+    $image=$stmnt->fetch(PDO::FETCH_ASSOC);
 
         //insert data to post table
         if(isset($_POST['description'])){
@@ -38,10 +38,9 @@ if(isset($_FILES['post-img'])){
             $statement->execute();
 
         }
-
-
-    redirect('/create-post.php');
-    }
+    } 
 }
+redirect('/');
+
 
 
