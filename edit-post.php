@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])){
     redirect('/');
 } else {
     require __DIR__.'/app/parse.php';
+    require __DIR__.'/views/navigation.php'; 
     
 }
 

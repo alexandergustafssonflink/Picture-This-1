@@ -2,6 +2,8 @@
 
 if (!isset($_SESSION['user'])){
     redirect('/');
+} else {
+    require __DIR__.'/views/navigation.php'; 
 }
 ?>
 

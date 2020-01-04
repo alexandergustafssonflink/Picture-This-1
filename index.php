@@ -1,59 +1,65 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<article>
-    <h1><?php echo $config['title']; ?></h1>
-    <p>Welcome to flowergram</p>
+<?php if(!isset($_SESSION['user'])):?>
+    <main class="welcome-container">
+        <div class= "title-group"> 
+            <h1 class="title"><?php echo $config['title']; ?> </h1>
+            <p>Sign up or login to see photos <br> from your friends.</p>
+        </div>
+        <div class="nav-button-wrapper">
+            <a class="nav-button" href="/signup.php">Sign up</a>
+            <a class="nav-button" href="/login.php">Login</a>
+        </div> <!-- /welcome-container -->
+    </main> <!-- /welcome-page -->
 
-</article>
-
-<?php if(isset($_SESSION['user'])):?>
+<?php else : ?> 
+    <?php require __DIR__.'/views/navigation.php'; ?>
     <?php require __DIR__.'/app/parse.php'; ?>
-    <p><?php echo 'You are signed in ' . $_SESSION['user']['email']; ?></p>
+        <nav class= "nav-top">
+            <h1 class="title"><?php echo $config['title']; ?> </h1>
+        </nav>
 
         <article class="feed">
-
-            <?php foreach ($posts as $post): ?>
-            <?php 
+            <?php foreach ($posts as $post): 
             $likes = countLikes($post['id'],$pdo);
             $author = getUserById($post['user_id'], $pdo);
             ?>
 
-                <div class= "post-wrapper">
-                    <div class ="post-content">
-                    <form action="/profile.php" method="post">
-                        <input type="hidden" name="author_id" value="<?php echo $author['id'];?>">
-                        <button type="submit"><?php echo $author['email']?></button>
-                    </form>
-                        <button>
-                            
-                        </button>
-                       
-                        <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image">
-                        <p><?php echo $post['description']; ?></p>
-                    </div> <!-- /post-content -->
-
-                    <form action="/app/posts/like.php" method="post">
+            <div class= "post-wrapper">
+                <div class ="post-content">
+                    <div class="post-info">
+                        <form action="/profile.php" method="post">
+                            <input type="hidden" name="author_id" value="<?php echo $author['id'];?>">
+                            <button type="submit" class="author"><?php echo $author['email']?></button>
+                        </form>
+                        <!-- check if user is the owner of post -->
+                        <?php if ($post['user_id'] === $user['id']): ?> 
+                            <a href="<?php echo "/edit-post.php?id=".$post['id']?>" class="edit">Edit post</a>
+                        <?php endif; ?>
+                    </div> <!-- /post-info -->
+    
+                    <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image">
+                    
+                    <div class= "like-row">
+                        <p class= "liked-by">Liked by <?php echo $likes; ?></p>
+                        <form action="/app/posts/like.php" method="post">
                         <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
-                        <button type="submit">Like</button>
-                    </form>
+                            <button type="submit" class="like-button" ><img src="/assets/icons/heart-like.png" alt="heart"></button>
+                        </form>
+    
+                        <form action="/app/posts/unlike.php" method="post">
+                            <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
+                            <button type="submit" class="unlike-button"><img src="/assets/icons/heart-unlike.png" alt="heart"></button>
+                        </form>
+                    </div><!-- /like-row -->
 
-                    <form action="/app/posts/unlike.php" method="post">
-                        <input type="hidden" name="post_id" value="<?php echo $post['id'];?>">
-                        <button type="submit">Unlike</button>
-                    </form>
+                    <p class= "description"><?php echo $author['email']?> says: <?php echo $post['description']; ?></p>
+                </div> <!-- /post-content -->
 
-                    <!-- check if user is the owner of post -->
-                    <?php if ($post['user_id'] === $user['id']): ?> 
-                        <a href="<?php echo "/edit-post.php?id=".$post['id']?>">Edit post</a>
-                    <?php endif; ?>
 
-                    <div class= likes>
-                        <p>Liked by <?php echo $likes; ?> flowerpowers.</p>
-                    </div>
+            </div> <!-- /post-wrapper -->
 
-                </div> <!-- /post -->
-
-            <?php endforeach; ?> <!-- end post -->
+            <?php endforeach; ?> <!-- end foreachposts -->
 
         </article> <!-- /feed -->
 <?php endif; ?> <!-- endif loggedIn -->

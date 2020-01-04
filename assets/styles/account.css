@@ -1,0 +1,39 @@
+.account-wrapper{
+    height: 100vh;
+}
+
+.fileinputs {
+    display: flex;
+    flex-direction: row;
+
+}
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 8rem;
+    height: 8rem;
+}
+
+.upload-button {
+    width: 100%;
+}
+
+input[type=file]{
+    width: 40%;
+    font-size: 1rem;
+}
+
+input.upload-button {
+    width: 40%;
+    font-size: 1rem;
+}
+
+p {
+    text-align: center;
+}
+
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+}
