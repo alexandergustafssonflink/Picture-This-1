@@ -1,7 +1,7 @@
 # Picture-This
 School assignment in creating an Instagram Clone.
 
-[](/assets/icons/welcome.png)
+<img src="/assets/icons/welcome.png" alt="welcome-image">
 
 
 ## Feautures 
@@ -17,7 +17,7 @@ School assignment in creating an Instagram Clone.
 * As a user I should be able to remove likes from posts.
 
 ## Extra 
-*As a user I should be able to follow and unfollow other users.
+* As a user I should be able to follow and unfollow other users.
 
 
 ## Installation
