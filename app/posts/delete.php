@@ -35,6 +35,7 @@ if(isset($_POST['password'])){
     $statement->execute();
 
     } else {
+        $_SESSION['error'] = 'The password is not correct!';
         redirect("/edit-post.php?id=".$postId);  
     }
 } 

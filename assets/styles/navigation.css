@@ -1,8 +1,41 @@
-.navbar {
-    position: fixed;
-    bottom: 0;
+.title-in-nav{
+    font-size: 1.6rem;
+}
+
+.nav-top {
     height: 3rem;
-    width: 100%;
+    margin: 1rem;
+    z-index: 1;
+}
+.hamburger-icon {
+    width: 3rem;
+    z-index: 2;
+    position: absolute;
+    right: 2rem;
+}
+
+.line1, 
+.line2, 
+.line3 {
+    width: 3.5rem;
+    height: 0.4rem;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.nav-items {
+   /* display: none; */
+}
+
+.show-menu {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vw;
+}
+
+.navbar {
     background-color:rgb(250,250,250);
 }
 
@@ -20,4 +53,4 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
-}
+} 

@@ -66,11 +66,11 @@ function countLikes(int $postId, PDO $pdo): int
 
 function getUserById(int $userId, PDO $pdo): array
 {
-    $statement=$pdo->prepare('SELECT * FROM user WHERE id = :userid');
+    $statement=$pdo->prepare('SELECT * FROM user WHERE id = :userId');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
-    $statement->bindParam(':userid', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
     $statement->execute();
     $author = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -90,4 +90,31 @@ function countFollowers(int $chosenUserId, PDO $pdo): int
     $followers = $statement->fetch(PDO::FETCH_ASSOC);
 
     return (int)$followers['COUNT(*)'];
+}
+
+function getLikeRowById(int $userId, int $postId, PDO $pdo){
+    $statement=$pdo->prepare('SELECT * FROM like WHERE user_id = :userId AND post_id = :postId ');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+    $statement->execute();
+    $hasliked = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $hasliked;
+}
+
+function getFollowById(int $userId, int $chosenUserId, PDO $pdo){
+    $statement=$pdo->prepare('SELECT * FROM follow WHERE user_id_0 = :userId AND user_id_1 = :chosenUserId ');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':chosenUserId', $chosenUserId, PDO::PARAM_INT);
+    $statement->execute();
+    $hasFollowed = $statement->fetch(PDO::FETCH_ASSOC);
+
+    return $hasFollowed;
+    
 }

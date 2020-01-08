@@ -25,7 +25,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+}
+.form-group > * {
+    margin: 0.25rem 0;
 }
 
 input {
@@ -42,6 +44,14 @@ label {
     font-family: 'Ibarra Real Nova', serif;
 }
 
-input[type=submit]{
+.signup-button, .login-button{
+    width: 100%;
+    /* background-color: rgb(222,222,222); */
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
 }

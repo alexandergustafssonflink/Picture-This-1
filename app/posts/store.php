@@ -38,9 +38,14 @@ if(isset($_FILES['post-image'])){
             $statement->execute();
 
         }
-    } 
+    } else {
+        $_SESSION['error'] = "There was an error uploading your post.";
+        redirect('/../../create-post.php');
+    }
 }
 redirect('/');
+
+
 
 
 

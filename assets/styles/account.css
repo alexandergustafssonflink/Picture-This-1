@@ -1,12 +1,30 @@
-.account-wrapper{
-    height: 100vh;
+/*  Style from login/signup.css
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 0.8rem 1.4rem;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+} */
+
+.edit-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 .fileinputs {
     display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
+    align-items: center;
 }
+
 .avatar {
     border-radius: 50%;
     object-fit: cover;
@@ -14,26 +32,26 @@
     height: 8rem;
 }
 
-.upload-button {
-    width: 100%;
-}
-
-input[type=file]{
-    width: 40%;
-    font-size: 1rem;
-}
-
-input.upload-button {
-    width: 40%;
-    font-size: 1rem;
-}
-
-p {
-    text-align: center;
-}
-
 textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: 'Open Sans', sans-serif;
+    resize: none;
+}
+
+.edit-text {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.submit-button {
+    margin-top: 2rem;
+}
+
+.edit-input {
+    margin: 0 0 2rem 0;
+}
+
+.choose-file {
+    margin: 1.5rem 0;
 }

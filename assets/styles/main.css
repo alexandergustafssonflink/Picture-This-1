@@ -1,6 +1,6 @@
 /* In this file you can add your custom styles. */
 html {
-    font-size: 10px;
+    font-size: 62.5%; /* 1rem is 10px */
 }
 
 * { 
@@ -33,3 +33,21 @@ a {
 a:hover {
     cursor: pointer;
 }
+
+.error-message {
+    text-align: center;
+    padding: 0.4rem;
+    margin: 2.5rem;
+    background-color: rgb(249,221,212);
+    border-radius: 0.2rem;
+    border: 1px solid rgb(199, 168, 158)
+}
+
+.success-message {
+    text-align: center;
+    padding: 0.4rem;
+    background-color: rgb(196,215,210);
+    border-radius: 0.2rem;
+    border: 1px solid rgb(170, 190, 185);
+}
+

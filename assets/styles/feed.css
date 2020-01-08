@@ -1,18 +1,26 @@
+div .no-post-message { 
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-post-message {
+text-align: center;
+}
+
 .feed {
     background-color:rgb(255,255,255);
 }
 
-.title-in-nav{
-    font-size: 1.6rem;
-}
-
 .post-wrapper {
-    padding: 1rem 0 1rem;
     margin: 0 0 2rem;
     box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
-.post-info, .liked-by, .description, .nav-top {
+.post-info,
+.like-row {
     margin: 0 1rem;
 }
 
@@ -21,45 +29,53 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.post-content > img {
+
+.img-in-feed {
     width: 100vw;
     height: 100vw;
     object-fit: cover;
-    margin: 0;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.like-row {
+    position: relative;
 }
 
 .liked-by {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 
-.author {
-    padding: 0 0 0.5rem 0;
+.author-button {
     border: none;
     text-decoration: none;
-    background-color:rgb(255,255,255);
 }
 
-.edit {
-    font-size: 1.2rem;
+.edit, .author-button {
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0.2rem;
+    font-size: 1.4rem;
+    padding: 0.4rem;
+    background-color: rgb(222,222,222);
 }
 
-.like-row {
-    width: 100%;
-    padding: 0.5rem 0 0 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.like-button{
+.like-button, .unlike-button {
     position: absolute;
-    right: 1rem;
+    right:0;
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-.unlike-button {
-    position: absolute;
-    right: 1rem;
+.description {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    width: 90%;
+}
+
+.author {
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 

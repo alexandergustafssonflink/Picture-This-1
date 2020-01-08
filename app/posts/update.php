@@ -41,4 +41,5 @@ if (isset($_GET['id'],$_POST['description'])){
     $statement->execute();
 }
 
+$_SESSION['success'] = 'Your post was successfully updated';
 redirect("/edit-post.php?id=".$postId);

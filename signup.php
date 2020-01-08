@@ -2,8 +2,14 @@
 
 <article class ="get-welcome-page">
     <div>
+        <a href="/index.php">
         <h1><?php echo $config['title']; ?></h1>
+        </a>
         <p>Sign up to see photos from your friends</p>
+        <?php if(isset($_SESSION['error'])):?>
+            <p class="error-message"><?php echo $_SESSION['error']; ?></p>
+        <?php unset($_SESSION['error']);?>
+<?php endif ;?>
     </div>
     
     <form action="app/users/signup.php" method="post" class="form-wrapper">
@@ -24,6 +30,10 @@
 
         <input type="submit" class="signup-button" value="Signup"></input>
     </form>
+    <div class="option">
+        <p>Or do you want to</p>
+        <a class="nav-button" href="/login.php">Login</a>
+    </div>
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

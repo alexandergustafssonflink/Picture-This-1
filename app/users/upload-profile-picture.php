@@ -4,8 +4,8 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 
 
-if($_SESSION['user']){
-    if(isset($_FILES['profile-img'])){
+if($_SESSION['user'] && isset($_FILES['profile-img'])){
+    if($_FILES['profile-img']['error'] === 0){
         //array storing name type tmp_name error and size about uploaded file
         $avatar = $_FILES['profile-img'];
         $id = $_SESSION['user']['id'];
@@ -33,7 +33,9 @@ if($_SESSION['user']){
         $statement->bindParam(':imageid', $image['id'], PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();
-        
-        redirect('/account.php');
-    }
-} 
+    } else {
+        $_SESSION['error'] = "There was an error uploading your post.";
+        redirect('/../../account.php');
+    }    
+}
+redirect('/../../account.php');

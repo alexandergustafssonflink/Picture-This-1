@@ -1,0 +1,23 @@
+.postform-wrapper {
+    height: calc(100vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+}
+
+.create-post-text {
+    padding: 5rem 0 5rem 0 ;
+}
+
+.create-post-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 5rem 0 ;
+}
+
+.create-post-content > * {
+    margin: 1rem 0 ;
+}
