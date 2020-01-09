@@ -16,9 +16,6 @@
 <?php else : ?> 
     <?php require __DIR__.'/views/navigation.php'; ?>
     <?php require __DIR__.'/app/parse.php'; ?>
-        <nav class= "nav-top">
-            <h1 class="title"><?php echo $config['title']; ?> </h1>
-        </nav>
         
         <?php if(isset($_SESSION['error'])):?>
         <p class="error-message"><?php echo $_SESSION['error']; ?></p>
