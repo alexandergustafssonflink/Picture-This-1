@@ -19,6 +19,7 @@ require __DIR__.'/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/account.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/edit-post.css">
-    <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:400,600,700|Open+Sans:400,600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">

@@ -7,9 +7,6 @@ if (!isset($_SESSION['user'])){
     require __DIR__.'/views/navigation.php'; 
 }
 ?>
-<nav class= "nav-top">
-    <h1 class="title"><?php echo $config['title']; ?> </h1>
-</nav>
 
 <?php if(isset($_POST['author_id'])): ?>
     <?php 
@@ -26,13 +23,21 @@ if (!isset($_SESSION['user'])){
     $hasFollowed = getFollowById($userId, $chosenUserId, $pdo)
 
     ?>
-    <div class="profile-wrapper">
         <div class="profile-content">
             <?php if($imageId): ?>
-            <img src="<?php echo "/app/users/uploads/avatars/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
+                <img src="<?php echo "/app/users/uploads/avatars/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
             <?php endif; ?>
+
             <p><?php echo $chosenUser['email']; ?></p>
-            <p>Followed by <?php echo $followers ; ?>.</p>
+
+            <?php if($followers === 0): ?>
+                <p class="followers">Waiting for followers!</p>
+            <?php elseif($followers === 1): ?>
+                <p class="followers"><?php echo $followers ; ?> follower</p>
+            <?php elseif($followers > 1): ?>
+                <p class="followers"><?php echo $followers ; ?> followers</p>
+            <?php endif;?>
+
             <p><?php echo $chosenUser['biography']; ?></p>
         </div> <!-- /profile-content  -->
 
@@ -51,7 +56,6 @@ if (!isset($_SESSION['user'])){
             <?php endif; ?>
             
         </div> <!-- follow-buttons-wrapper -->
-    </div> <!-- /profile-wrapper -->
 
 <?php endif ;?>
 

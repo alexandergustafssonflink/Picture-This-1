@@ -12,10 +12,7 @@ if(isset($_GET['id'])){
     $post = getPostById($userId, $postId, $pdo);
 }
 
-if(isset($_SESSION['error'])):?>
-    <p class="error-message"><?php echo $_SESSION['error']; ?></p>
-    <?php unset($_SESSION['error']);?>
-<?php endif ;?>
+?>
 
 <nav class="nav-top">
     <h1><?php echo $config['title']; ?></h1>
@@ -26,9 +23,14 @@ if(isset($_SESSION['error'])):?>
     <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image" loading="lazy">
     <?php if(isset($_SESSION['success'])):?>
         <p class="success-message"><?php echo $_SESSION['success']; ?></p>
-        <?php unset($_SESSION['sucess']);?>
+        <?php unset($_SESSION['success']);
+    elseif(isset($_SESSION['error'])):?>
+        <p class="error-message"><?php echo $_SESSION['error']; ?></p>
+        <?php unset($_SESSION['error']);?>
     <?php endif;?>
+
     <p>Update your post image and/or description</p>
+
     <input type="file" name="edit-post-image" accept="image/*" class="choose-file">
     
     <div class="form-group">

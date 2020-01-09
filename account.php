@@ -9,11 +9,6 @@ if (!isset($_SESSION['user'])){
     $avatar = getAvatarbyId($imageId, $pdo);
 }
 ?>
-<main class="account-wrapper"> 
-    <nav class= "nav-top">
-        <h1 class="title"><?php echo $config['title']; ?> </h1>
-    </nav>
-  
     
 <article class= "edit-wrapper">
     <?php if(isset($_SESSION['error'])):?>
@@ -32,7 +27,7 @@ if (!isset($_SESSION['user'])){
             <input type="submit" class="upload-button" value="Upload"></input> 
             
         </div> <!-- /fileinputs -->
-    <p class="edit-text">Upload profile picture <br> Edit your account email, password and biography.</p>
+    <p class="edit-text"> Edit your account email, password and biography.</p>
             </form>
             
     
@@ -56,5 +51,4 @@ if (!isset($_SESSION['user'])){
         </div><!-- /form-group -->
     </form>
     </article> <!-- /edit-wrapper -->
-</main> <!-- /account-wrapper -->
 <?php require __DIR__.'/views/footer.php'; ?>

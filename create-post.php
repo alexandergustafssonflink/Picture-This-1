@@ -7,10 +7,6 @@ if (!isset($_SESSION['user'])){
 }
 ?>
 
-<nav class="nav-top">
-    <h1><?php echo $config['title']; ?></h1>
-</nav>
-
 <form action="app/posts/store.php" method="post" enctype="multipart/form-data" class="postform-wrapper">
     <?php if(isset($_SESSION['error'])):?>
         <p class="error-message"><?php echo $_SESSION['error']; ?></p>
