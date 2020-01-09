@@ -15,14 +15,18 @@ input {
 } */
 
 .edit-wrapper {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .fileinputs {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 6rem;
 }
 
 .avatar {
@@ -37,11 +41,12 @@ textarea {
     border-radius: 4px;
     font-family: 'Open Sans', sans-serif;
     resize: none;
+    background-color: rgb(250,250,250);
 }
 
 .edit-text {
     text-align: center;
-    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .submit-button {
@@ -54,4 +59,16 @@ textarea {
 
 .choose-file {
     margin: 1.5rem 0;
+}
+
+.submit-button:hover,
+.upload-button:hover {
+    cursor: pointer;
+    background-color: rgb(222,222,222);
+}
+
+.followers {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.4rem;
 }

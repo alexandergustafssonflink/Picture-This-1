@@ -29,3 +29,11 @@
     border-radius: 1rem;
     margin: 0.8rem 0;
 }
+
+@media only screen and (min-width: 600px) {
+    .nav-button:hover {
+        transition-duration: .2s;
+        background-color: rgb(222,222,222);
+    }
+}
+

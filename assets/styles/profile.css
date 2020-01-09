@@ -1,11 +1,10 @@
-.profile-wrapper {
-    height: calc(100vh - 3rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin: 0 2rem;
+.profile-content {
+    width: 66%;
+    margin: 8rem auto;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    border: 1px solid #ccc;
 }
-
 .follow-buttons-wrapper {
     display: flex;
     flex-direction: row;
@@ -17,6 +16,11 @@
 }
 
 .profile-content > p {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
+}
+
+.follow-buttons:hover {
+    cursor: pointer;
+    background-color: rgb(222,222,222);
 }
 

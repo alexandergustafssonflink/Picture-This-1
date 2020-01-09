@@ -1,12 +1,4 @@
-.title-in-nav{
-    font-size: 1.6rem;
-}
-
-.nav-top {
-    height: 3rem;
-    margin: 1rem;
-    z-index: 1;
-}
+/* 
 .hamburger-icon {
     width: 3rem;
     z-index: 2;
@@ -21,36 +13,122 @@
     height: 0.4rem;
     background-color: black;
     margin: 6px 0;
-}
+} */
 
-.nav-items {
-   /* display: none; */
-}
-
-.show-menu {
+/* .show-menu {
     display: block;
     position: absolute;
     right: 0;
     top: 0;
     width: 50vw;
+} */
+
+.mobile-title {
+    display: flex;
+    align-items: center;
+    height: 5.2rem;
+    width: 100%;
+    background-color:rgb(250,250,250);
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.navigation-title-mobile {
+    font-size: 2.6rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    padding-left: 1.6rem;
+    margin: auto 0;
 }
 
 .navbar {
-    background-color:rgb(250,250,250);
+    overflow: hidden;
+    position: fixed;
+    height: 5.2rem;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255,255,255);
+    z-index: 2;
 }
 
-.navbar ul{
+
+.nav-items {
+    width: 100vw;
+}
+
+.nav-icons {
+    width: 100%;
+    height: 5.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+}
+
+.navigation-title {
+    display: none; 
+    font-size: 2.6rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+
+.navbar {
+    background-color:rgb(255,255,255);
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .nav-item{
     list-style: none;
 }
 
-.nav-link, .navigation-title {
+.nav-link {
     text-decoration: none;
     color: black;
-    font-weight: 500;
-} 
+}
+
+
+@media only screen and (min-width: 600px) {
+    .navigation-title {
+        display: block;
+    }
+
+    .mobile-title {
+        display: none 
+    }
+    .hamburger-icon {
+        display: none;
+    }
+
+    .navbar {
+        overflow: hidden;
+        position: fixed;
+        height: 5.2rem;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .nav-items > ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-items {
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    .nav-icons {
+        width: 33%;
+        height: 5.2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+}
