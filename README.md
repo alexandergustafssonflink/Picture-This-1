@@ -1,7 +1,7 @@
 # Picture-This
 School assignment in creating an Instagram Clone.
 
-<img src="/assets/icons/welcome.png" alt="welcome-image">
+<img src="assets/icons/welcome.png" alt="welcome-image">
 
 
 ## Feautures 
