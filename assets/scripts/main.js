@@ -9,3 +9,15 @@ hamburgerIcon.addEventListener("click", () => {
   navItems.classList.toggle("show-menu");
   //menuContainer.classList.toggle("change-background");
 }); */
+
+let modalBtn = document.querySelector("#modal-btn");
+let modal = document.querySelector(".modal");
+let closeBtn = document.querySelector(".close-btn");
+
+modalBtn.onclick = function(){
+  modal.style.display = "block"
+}
+closeBtn.onclick = function(){
+  modal.style.display = "none"
+}
+
