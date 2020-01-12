@@ -44,7 +44,7 @@ if (isset($_POST['password']) && !empty($_POST['password'])) {
 
     } else {
         $_SESSION['error'] = "The passwords are not matching.";
-        redirect('/../../account.php');
+        redirect('/../../myaccount.php');
     }
 } 
 
@@ -61,4 +61,4 @@ if (isset($_POST['biography'])){
     $_SESSION['user']['biography'] = $user['biography']; 
 }
 
-redirect('/account.php');
+redirect('/myaccount.php');
