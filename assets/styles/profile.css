@@ -4,6 +4,7 @@
     padding: 1rem;
     border-radius: 0.2rem;
     border: 1px solid #ccc;
+    background-color:rgb(255,255,255);
 }
 .follow-buttons-wrapper {
     display: flex;
@@ -25,8 +26,11 @@
 }
 
 @media only screen and (min-width: 600px) {
-    .profile-content {
-        margin: 14rem auto;
-    }
+   .profile-wrapper {
+       height: 100vh;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+   }
 }
-
