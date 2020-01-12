@@ -37,13 +37,13 @@ if($_SESSION['user'] && isset($_FILES['profile-img'])){
 
     else if($_FILES['profile-img']['error'] === 1){
         $_SESSION['error'] = "The file is to big to upload.";
-        redirect('/../../account.php');
+        redirect('/../../myaccount.php');
         
     }
 
     else if($_FILES['profile-img']['error'] === 4){
         $_SESSION['error'] = "You didn't choose a file before upload.";
-        redirect('/../../account.php');
+        redirect('/../../myaccount.php');
     }
 }
-redirect('/../../account.php');
+redirect('/../../myaccount.php');
