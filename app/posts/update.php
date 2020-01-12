@@ -40,17 +40,11 @@ if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])){
 
             $_SESSION['success'] = 'Your image was successfully updated';
             redirect("/edit-post.php?id=".$postId);
-        }
 
-    else if($_FILES['edit-post-image']['error'] === 1){
-        $_SESSION['error'] = "The file is to big to upload.";
-        redirect("/edit-post.php?id=".$postId);
+        } else {
+            $_SESSION['error'] = "There was an error uploading your image.";
+            redirect("/edit-post.php?id=".$postId) ;
             
-    }
-    
-    else if($_FILES['edit-post-image']['error'] === 4){
-        $_SESSION['error'] = "You didn't choose a file before upload.";
-        redirect("/edit-post.php?id=".$postId);
     }
 }
 
