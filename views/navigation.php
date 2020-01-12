@@ -3,9 +3,6 @@
         <div class="line2"></div>
         <div class="line3"></div>
 </div> -->
-
-
-
 <nav class="mobile-title">
     <a class="navigation-title-mobile" href="/index.php"><?php echo $config['title']; ?></a>
 </nav>
@@ -31,7 +28,7 @@
                 </li><!-- /nav-item -->
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/account.php"><img src="assets/icons/myaccount.png" width = 32px height = 32px ></a>
+                    <a class="nav-link" href="/myaccount.php"><img src="assets/icons/myaccount.png" width = 32px height = 32px ></a>
                 </li><!-- /nav-item -->
 
                 <li class="nav-item">

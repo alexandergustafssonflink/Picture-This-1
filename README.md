@@ -1,9 +1,6 @@
 # Picture-This
 School assignment in creating an Instagram Clone.
 
-<img src="assets/icons/welcome.png" alt="welcome-image">
-
-
 ## Feautures 
 * As a user I should be able to create an account.
 * As a user I should be able to login.

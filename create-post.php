@@ -15,12 +15,14 @@ if (!isset($_SESSION['user'])){
     <p class="create-post-text">Create a post with image and description</p>
     <div class="create-post-content">
         <input type="file" name="post-image" accept="image/*" class= "choose-file">
+        
             
         <div class="form-group">
             <label for="description">Description</label>
             <textarea type="text" name="description" id="description" cols="30" rows="10"></textarea>
         </div>
         <input type="submit" class="upload-button" value="Upload" class="input-file"></input>
+        
     </div>
 
 </form>

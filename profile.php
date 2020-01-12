@@ -23,6 +23,7 @@ if (!isset($_SESSION['user'])){
     $hasFollowed = getFollowById($userId, $chosenUserId, $pdo)
 
     ?>
+    <article class="profile-wrapper">
         <div class="profile-content">
             <?php if($imageId): ?>
                 <img src="<?php echo "/app/users/uploads/avatars/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
@@ -56,7 +57,7 @@ if (!isset($_SESSION['user'])){
             <?php endif; ?>
             
         </div> <!-- follow-buttons-wrapper -->
-
+        </article> <!-- /profile-wrapper-->
 <?php endif ;?>
 
 

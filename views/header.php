@@ -16,7 +16,7 @@ require __DIR__.'/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/navigation.css">
     <link rel="stylesheet" href="/assets/styles/login-signup.css">
     <link rel="stylesheet" href="/assets/styles/create-post.css">
-    <link rel="stylesheet" href="/assets/styles/account.css">
+    <link rel="stylesheet" href="/assets/styles/myaccount.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/edit-post.css">
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:400,600,700|Open+Sans:400,600&display=swap" rel="stylesheet">

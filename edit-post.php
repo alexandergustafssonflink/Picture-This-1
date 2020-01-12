@@ -23,8 +23,10 @@ if(isset($_GET['id'])){
     <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image" loading="lazy">
     <?php if(isset($_SESSION['success'])):?>
         <p class="success-message"><?php echo $_SESSION['success']; ?></p>
-        <?php unset($_SESSION['success']);
-    elseif(isset($_SESSION['error'])):?>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif;?>
+
+    <?php if(isset($_SESSION['error'])):?>
         <p class="error-message"><?php echo $_SESSION['error']; ?></p>
         <?php unset($_SESSION['error']);?>
     <?php endif;?>
