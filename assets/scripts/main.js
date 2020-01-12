@@ -20,4 +20,3 @@ modalBtn.onclick = function(){
 closeBtn.onclick = function(){
   modal.style.display = "none"
 }
-
