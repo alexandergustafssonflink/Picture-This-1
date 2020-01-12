@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-//fetch user table from database and insert to SESSION
+//fetch user table from database and insert to SESSION[user]
 $statement = $pdo->prepare('SELECT * FROM user WHERE id = :id');
 $statement->bindParam(':id', $_SESSION['user']['id'], PDO::PARAM_STR);
 $statement->execute();
@@ -12,7 +12,7 @@ $_SESSION['user'] = $user;
 $userId = (int) $_SESSION['user']['id'];
 
 
-//fetch avatar filename(data) from database and insert to variable to use in profile.php
+//fetch avatar filename(data) from database
 function getAvatarbyId(int $imageId, PDO $pdo)
 {
     $statement=$pdo->prepare("SELECT data FROM user INNER JOIN image ON user.image_id = image.id WHERE image.id = :imageId");
@@ -25,7 +25,7 @@ function getAvatarbyId(int $imageId, PDO $pdo)
 }
 
 
-//fetch image filename(data) and description from table image and post. Use variable in index.php
+//fetch image filename(data) and description from table image and post
 $statement=$pdo->prepare("SELECT * FROM image INNER JOIN post ON image.id = image_id;");
 $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
