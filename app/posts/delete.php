@@ -29,10 +29,16 @@ if(isset($_POST['password'])){
     $statement->bindParam(':imageId', $imageId, PDO::PARAM_STR);
     $statement->execute();
 
+    // delete like row 
+    $statement=$pdo->prepare("DELETE FROM like WHERE post_id = :postId");
+    $statement->bindParam(':postId', $postId, PDO::PARAM_STR);
+    $statement->execute();
+    
     //delete post row
     $statement=$pdo->prepare("DELETE FROM post WHERE id = :postId");
     $statement->bindParam(':postId', $postId, PDO::PARAM_STR);
     $statement->execute();
+
 
     } else {
         $_SESSION['error'] = 'The password is not correct!';
