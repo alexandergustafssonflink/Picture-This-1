@@ -1,27 +1,35 @@
-/* 
+/* hamburger menu */
+
 .hamburger-icon {
     width: 3rem;
     z-index: 2;
     position: absolute;
-    right: 2rem;
+    right: 1.6rem;
 }
 
-.line1, 
+.line1,
 .line2, 
 .line3 {
-    width: 3.5rem;
-    height: 0.4rem;
+    width: 3rem;
+    height: 0.3rem;
     background-color: black;
     margin: 6px 0;
-} */
+    transition: 0.3s;
+} 
 
-/* .show-menu {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50vw;
-} */
+.change .line1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+
+}
+.change .line2 {
+    opacity: 0;
+}
+
+.change .line3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-6px, -4px);
+}
 
 .mobile-title {
     display: flex;
@@ -31,7 +39,6 @@
     background-color:rgb(250,250,250);
     border-bottom: 1px solid #dbdbdb;
 }
-
 .navigation-title-mobile {
     font-size: 2.6rem;
     font-family: 'Open Sans', sans-serif;
@@ -40,52 +47,61 @@
     margin: auto 0;
 }
 
-.navbar {
-    overflow: hidden;
-    position: fixed;
-    height: 5.2rem;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background-color: rgb(255,255,255);
-    z-index: 2;
-}
-
-
-.nav-items {
-    width: 100vw;
-}
-
-.nav-icons {
-    width: 100%;
-    height: 5.2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.navigation-title {
+.mobile-navbar {
     display: none; 
-    font-size: 2.6rem;
-    font-family: 'Open Sans', sans-serif;
+}
+
+.mobile-nav-item {
+    text-align: center;
+    text-transform: uppercase;
     font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 0.8rem 1.4rem;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    margin-top: 4rem;
 }
 
-
-.navbar {
-    background-color:rgb(255,255,255);
-    border-bottom: 1px solid #dbdbdb;
+/* onclick hamburger-icon this class toggles */
+.show-menu {
+    height: calc(100vh - 5.2rem);
+    z-index: 1;
+    background-color: rgb(250,250,250);
+    position: absolute;
+    right: 0;
+    padding: 2rem;
+    width: 66vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fade-in-menu 0.3s ease-in;
+    -webkit-animation: fade-in-menu 0.3s ease-in;
 }
 
-.nav-item{
-    list-style: none;
+.desktop-navbar {
+    display: none;
 }
 
-.nav-link {
-    text-decoration: none;
-    color: black;
+@keyframes fade-in-menu {
+    0% {
+        transform: translateX(100%);
+     }
+
+     100% {
+        transform: translateX(0%);
+     }
 }
+
+@-webkit-keyframes fade-in-menu {
+    0% {
+        transform: translateX(100%);
+     }
+
+     100% {
+        transform: translateX(0%);
+     }
+}
+
 
 /* modal box */
 .modal {
@@ -102,9 +118,9 @@
 
 .modal-content {
     position: relative;
-    background-color: rgb(222,222,222);
+    background-color: rgb(250,250,250);
     padding: 1rem;
-    margin: 35rem auto;
+    margin: 25rem auto;
     width: 53%;
     border-radius: 0.8rem;
     text-align: center;
@@ -120,7 +136,7 @@
     height: 4rem;
     border-radius: 0.8rem;
     margin: 1rem;
-    background-color: rgb(250,250,250)
+    background-color: rgb(255,255,255)
 }
 
 
@@ -129,20 +145,38 @@
         display: block;
     }
 
-    .mobile-title {
+    .mobile-title,
+    .mobile-navbar,
+    .hamburger-icon {
         display: none 
     }
-    .hamburger-icon {
-        display: none;
+
+    .navigation-title {
+        display: block;
+        font-size: 2.6rem;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+    
+    .nav-item{
+        list-style: none;
+    }
+    
+    .nav-link {
+        text-decoration: none;
+        color: black;
     }
 
-    .navbar {
+    .desktop-navbar {
+        display: block;
         overflow: hidden;
         position: fixed;
         height: 5.2rem;
         width: 100%;
         top: 0;
         left: 0;
+        border-bottom: 1px solid #dbdbdb;
+        background-color:rgb(250,250,250);
     }
 
     .nav-items > ul{
@@ -173,5 +207,6 @@
     .close-btn:hover ,
     .yes-btn:hover {
         cursor: pointer;
+        background-color: rgb(222,222,222);
 }
 }
