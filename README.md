@@ -20,7 +20,9 @@ School assignment at YRGO where the assignment was to create an Instagram Clone 
 
 ## Installation
 1. Clone the repository 
+```bash
 $ git clone https://github.com/Juljulia/Picture-This
+```
 2. Set up a webserver with the document root as the cloned repository.
 
 ### Testers 
