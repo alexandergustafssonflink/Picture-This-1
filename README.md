@@ -1,5 +1,8 @@
 # Picture-This
-School assignment in creating an Instagram Clone.
+School assignment in creating an Instagram Clone using
+
+<img src="picture-this.png">
+
 
 ## Feautures 
 * As a user I should be able to create an account.
