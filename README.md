@@ -1,8 +1,5 @@
 # Picture-This
-School assignment in creating an Instagram Clone using
-
-<img src="picture-this.png">
-
+School assignment in creating an Instagram Clone using CSS, HTML, Javascript, SQL and PHP.
 
 ## Feautures 
 * As a user I should be able to create an account.
