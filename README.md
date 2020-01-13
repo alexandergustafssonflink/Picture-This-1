@@ -1,5 +1,5 @@
 # Picture-This
-School assignment at YRGO where the assignment was to create an Instagram Clone using CSS, HTML, Javascript, PHP and a SQL database.
+Picture This is a school assignment at YRGO where we got the opportunity to learn how to create an Instagram Clone using CSS, HTML, Javascript, PHP and a SQL database.
 
 ![header-img](https://media.giphy.com/media/3oz8xSfBvRqfbU9n0c/source.gif) 
 
