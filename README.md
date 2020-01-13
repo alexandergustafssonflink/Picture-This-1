@@ -1,7 +1,7 @@
 # Picture-This
 School assignment in creating an Instagram Clone using CSS, HTML, Javascript, SQL and PHP.
 
-[header-img](https://media.giphy.com/media/3oz8xSfBvRqfbU9n0c/source.gif) 
+![header-img](https://media.giphy.com/media/3oz8xSfBvRqfbU9n0c/source.gif) 
 
 ## Feautures 
 * As a user I should be able to create an account.
