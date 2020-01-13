@@ -14,10 +14,6 @@ if(isset($_GET['id'])){
 
 ?>
 
-<nav class="nav-top">
-    <h1><?php echo $config['title']; ?></h1>
-</nav>
-
 <article>
     <form action="<?php echo '/app/posts/update.php?id='. $postId ?>" method="post" enctype="multipart/form-data" class="edit-post-form">
     <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image" loading="lazy">
