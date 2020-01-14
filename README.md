@@ -26,5 +26,5 @@ $ git clone https://github.com/Juljulia/Picture-This
 2. Set up a webserver with the document root as the cloned repository.
 
 ### Testers 
-* 
-*
+* Maja Alin
+* Victor Ljungblad
