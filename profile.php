@@ -26,7 +26,7 @@ if (!isset($_SESSION['user'])){
     <article class="profile-wrapper">
         <div class="profile-content">
             <?php if($imageId): ?>
-                <img src="<?php echo "/app/users/uploads/avatars/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
+                <img src="<?php echo "/app/users/uploads/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
             <?php endif; ?>
 
             <p><?php echo $chosenUser['email']; ?></p>

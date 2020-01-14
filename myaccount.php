@@ -17,8 +17,8 @@ if (!isset($_SESSION['user'])){
     <?php endif;?>
         <form action="app/users/upload-profile-picture.php" method="post" enctype="multipart/form-data">
         <div class="fileinputs">
-        <?php if ($avatar['data'] !== NULL):?>
-            <img src="<?php echo "/app/users/uploads/avatars/".$avatar['data'];?>" alt="avatar image" class="avatar" loading="lazy">
+        <?php if ($avatar['data']!== NULL):?>
+            <img src="<?php echo "/app/users/uploads/".$avatar['data'];?>" alt="avatar image" class="avatar" loading="lazy">
             <?php else : ?> 
                 <p>Upload your profile avatar image</p>
             <?php endif ; ?>

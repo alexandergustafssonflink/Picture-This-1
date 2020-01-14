@@ -22,7 +22,7 @@ if(isset($_POST['password'])){
     } 
     if(password_verify($_POST['password'], $user['password'])) {
     // Removes the previous image from the uploads folder
-    unlink(__DIR__.'/uploads/images/'.$lastImage);
+    unlink(__DIR__.'/uploads/'.$lastImage);
         
     //delete image row
     $statement=$pdo->prepare("DELETE FROM image WHERE id = :imageId");

@@ -24,12 +24,12 @@ if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])){
     if($_FILES['edit-post-image']['error'] === 0){
             //create a unique fileName, ends with type jpg or other
             $fileName = uniqid().($newImage['name']);
-            $destination = __DIR__.'/uploads/images/'.$fileName;
+            $destination = __DIR__.'/uploads/'.$fileName;
             move_uploaded_file($newImage['tmp_name'], $destination);
             
             // Removes the previous image from the uploads folder
             if($newImage['name'] !== ''){
-            unlink(__DIR__.'/uploads/images/'.$lastImage);
+            unlink(__DIR__.'/uploads/'.$lastImage);
             }
                 
             //update image data in image table
@@ -44,8 +44,7 @@ if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])){
         } else {
             $_SESSION['error'] = "There was an error uploading your image.";
             redirect("/edit-post.php?id=".$postId) ;
-            
-    }
+    } 
 }
 
 

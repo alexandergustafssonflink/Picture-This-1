@@ -12,7 +12,7 @@ if(isset($_FILES['post-image'])){
 
     //create a unique fileName, ends with type jpg or other
     $fileName = uniqid().($postImage['name']);
-    $destination = __DIR__.'/uploads/images/'.$fileName;
+    $destination = __DIR__.'/uploads/'.$fileName;
         
     // Using the move_uploaded_file function we can upload files from the
     // temporary path to a new destination. Remember to specify the full

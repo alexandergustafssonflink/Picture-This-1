@@ -11,7 +11,7 @@ if($_SESSION['user'] && isset($_FILES['profile-img'])){
         $id = $_SESSION['user']['id'];
         //create a unique fileName, ends with type jpg or other
         $fileName = uniqid().($avatar['name']);
-        $destination = __DIR__.'/uploads/avatars/'.$fileName;
+        $destination = __DIR__.'/uploads/'.$fileName;
                 
         // Using the move_uploaded_file function we can upload files from the
         // temporary path to a new destination. Remember to specify the full

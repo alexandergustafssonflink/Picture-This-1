@@ -50,7 +50,7 @@
                     </div> <!-- /post-info -->
     
                     
-                    <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image" class="img-in-feed" loading="lazy">
+                    <img src="<?php echo '/app/posts/uploads/'.$post['data']?>" alt="post-image" class="img-in-feed" loading="lazy">
                     
                     <div class="like-row">
                         <?php if ($hasliked) : ?>

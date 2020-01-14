@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
 
 <article>
     <form action="<?php echo '/app/posts/update.php?id='. $postId ?>" method="post" enctype="multipart/form-data" class="edit-post-form">
-    <img src="<?php echo '/app/posts/uploads/images/'.$post['data']?>" alt="post-image" loading="lazy">
+    <img src="<?php echo '/app/posts/uploads/'.$post['data']?>" alt="post-image" loading="lazy">
     <?php if(isset($_SESSION['success'])):?>
         <p class="success-message"><?php echo $_SESSION['success']; ?></p>
         <?php unset($_SESSION['success']); ?>
