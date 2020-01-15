@@ -14,7 +14,7 @@ if(isset($_POST['email'], $_POST['password'])) {
         $user=$statement->fetch(PDO::FETCH_ASSOC);
 
         if (!$user) {
-            $_SESSION['error'] = "Sorry, your password was incorrect.";
+            $_SESSION['error'] = "Sorry, the mail was incorrect.";
             redirect('/../../login.php');   
         }
 
@@ -26,10 +26,14 @@ if(isset($_POST['email'], $_POST['password'])) {
             $_SESSION['user'] = $user;
             
             redirect('/');
-        } 
+        } else {
+            $_SESSION['error'] = "Sorry, your password was incorrect.";
+            redirect('/../../login.php');
+        }
 
     } else {
         $_SESSION['error'] = "The email address is not valid.";
         redirect('/../../login.php');   
     }
 }
+redirect('/../../login.php');   
