@@ -1,4 +1,4 @@
-app/users/uploads/*
-app/posts/uploads/*
-!app/users/uploads/.keep
-!app/posts/uploads/.keep
+/app/users/uploads/*
+/app/posts/uploads/*
+!/app/users/uploads/.keep
+!/app/posts/uploads/.keep
