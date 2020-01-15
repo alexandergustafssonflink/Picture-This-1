@@ -1,5 +1,5 @@
 .DS_Store
-/app/users/uploads
-/app/posts/uploads
-!/app/users/uploads/.gitkeep
-!/app/posts/uploads/.gitkeep
+app/users/uploads/*
+!app/users/uploads/.gitkeep
+app/posts/uploads/*
+!app/posts/uploads/.gitkeep
