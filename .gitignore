@@ -2,4 +2,4 @@
 /app/posts/uploads
 !/app/users/uploads/.gitkeep
 !/app/posts/uploads/.gitkeep
-.DS_Store
+DS_Store
