@@ -19,7 +19,7 @@ if (!function_exists('redirect')) {
 
 function getPostById(int $userId, int $postId, PDO $pdo): array
 {
-    $statement=$pdo->prepare('SELECT * FROM post INNER JOIN image ON image_id = image.id WHERE user_id = :userid AND post.id = :postid');
+    $statement = $pdo->prepare('SELECT * FROM post INNER JOIN image ON image_id = image.id WHERE user_id = :userid AND post.id = :postid');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -28,28 +28,29 @@ function getPostById(int $userId, int $postId, PDO $pdo): array
     $statement->execute();
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if($post){
+    if ($post) {
         return $post;
     }
 }
 
 
-function getAvatarbyId(int $imageId, PDO $pdo){
-    $statement=$pdo->prepare("SELECT data FROM user INNER JOIN image ON user.image_id = image.id WHERE image.id = :imageId");
+function getAvatarbyId(int $imageId, PDO $pdo)
+{
+    $statement = $pdo->prepare("SELECT data FROM user INNER JOIN image ON user.image_id = image.id WHERE image.id = :imageId");
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
     $statement->bindParam(':imageId', $imageId, PDO::PARAM_INT);
     $statement->execute();
     $avatar = $statement->fetch(PDO::FETCH_ASSOC);
-    if($avatar){
+    if ($avatar) {
         return $avatar;
     }
 }
 
 function getUserById(int $userId, PDO $pdo): array
 {
-    $statement=$pdo->prepare('SELECT * FROM user WHERE id = :userId');
+    $statement = $pdo->prepare('SELECT * FROM user WHERE id = :userId');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -57,14 +58,14 @@ function getUserById(int $userId, PDO $pdo): array
     $statement->execute();
     $author = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if($author){
+    if ($author) {
         return $author;
     }
 }
 
 function countLikes(int $postId, PDO $pdo): int
 {
-    $statement=$pdo->prepare('SELECT COUNT(*) FROM like WHERE post_id = :postId');
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM like WHERE post_id = :postId');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -72,11 +73,12 @@ function countLikes(int $postId, PDO $pdo): int
     $statement->execute();
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
 
-    return (int)$likes['COUNT(*)'];
+    return (int) $likes['COUNT(*)'];
 }
 
-function getLikeRowById(int $userId, int $postId, PDO $pdo){
-    $statement=$pdo->prepare('SELECT * FROM like WHERE user_id = :userId AND post_id = :postId ');
+function getLikeRowById(int $userId, int $postId, PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM like WHERE user_id = :userId AND post_id = :postId ');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -90,7 +92,7 @@ function getLikeRowById(int $userId, int $postId, PDO $pdo){
 
 function countFollowers(int $chosenUserId, PDO $pdo): int
 {
-    $statement=$pdo->prepare('SELECT COUNT(*) FROM follow WHERE user_id_1 = :userId');
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM follow WHERE user_id_1 = :userId');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -98,11 +100,12 @@ function countFollowers(int $chosenUserId, PDO $pdo): int
     $statement->execute();
     $followers = $statement->fetch(PDO::FETCH_ASSOC);
 
-    return (int)$followers['COUNT(*)'];
+    return (int) $followers['COUNT(*)'];
 }
 
-function getFollowById(int $userId, int $chosenUserId, PDO $pdo){
-    $statement=$pdo->prepare('SELECT * FROM follow WHERE user_id_0 = :userId AND user_id_1 = :chosenUserId ');
+function getFollowById(int $userId, int $chosenUserId, PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM follow WHERE user_id_0 = :userId AND user_id_1 = :chosenUserId ');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -112,5 +115,16 @@ function getFollowById(int $userId, int $chosenUserId, PDO $pdo){
     $hasFollowed = $statement->fetch(PDO::FETCH_ASSOC);
 
     return $hasFollowed;
-    
+}
+
+function getLastThreeComments(int $postId, pdo $pdo)
+{
+    $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date DESC LIMIT 3');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+    $statement->execute();
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $comments;
 }
