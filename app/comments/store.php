@@ -4,27 +4,47 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+header('Content-Type: application/json');
+
 $user = $_SESSION['user'];
 $id = $user['id'];
 $date = date('Y/m/d h:i:s a', time());
 
-if (isset($_POST['comment'])) {
-    $comment = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
-    $postid = $_GET['id'];
 
-    $sql = 'INSERT INTO comment (post_id, comment, user_id, date) VALUES (:postId, :comment, :id, :date)';
+if (isset($_POST['comment'], $_POST['postId'], $_POST['userId'], $_POST['userEmail'])) {
+    $comment = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
+    $postid = $_POST['postId'];
+    $userId = $_POST['userId'];
+    $userEmail = $_POST['userEmail'];
+    $id = uniqid();
+
+
+    $sql = 'INSERT INTO comment (post_id, comment, user_id, date) VALUES (:postId, :comment, :userId, :date)';
 
     $statement = $pdo->prepare($sql);
     if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
+        $errors = $pdo->errorInfo();
+        echo json_encode($errors);
+        exit;
     }
 
     $statement->bindParam(':comment', $comment, PDO::PARAM_STR);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->bindParam('userId', $userId, PDO::PARAM_INT);
     $statement->bindParam(':date', $date, PDO::PARAM_STR);
     $statement->bindParam(':postId', $postid, PDO::PARAM_STR);
 
     $statement->execute();
 
-    redirect('/');
+    $id = $pdo->lastInsertId();
+
+    $response = [
+        'comment' => $comment,
+        'userId' => $user,
+        'userEmail' => $userEmail,
+        'date' => $date,
+        'id' => $id
+    ];
+
+    echo json_encode($response);
+    exit;
 }

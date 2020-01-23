@@ -117,9 +117,10 @@ function getFollowById(int $userId, int $chosenUserId, PDO $pdo)
     return $hasFollowed;
 }
 
-function getLastThreeComments(int $postId, pdo $pdo)
+
+function getAllComments(int $postId, pdo $pdo)
 {
-    $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date DESC LIMIT 3');
+    $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -128,3 +129,15 @@ function getLastThreeComments(int $postId, pdo $pdo)
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $comments;
 }
+
+//function getLastThreeComments(int $postId, pdo $pdo)
+// {
+//     $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date DESC LIMIT 3');
+//     if (!$statement) {
+//         die(var_dump($pdo->errorInfo()));
+//     }
+//     $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+//     $statement->execute();
+//     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+//     return $comments;
+// }

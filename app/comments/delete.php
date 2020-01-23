@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+header('Content-Type: application/json');
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -24,6 +26,12 @@ if (isset($_GET['id'])) {
     }
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
-}
 
-redirect('/post.php?id=' . $comment['post_id']);
+    $response  = [
+        'removeComment' => true
+    ];
+
+    echo json_encode($response);
+
+    exit;
+}
