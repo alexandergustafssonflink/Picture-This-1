@@ -77,16 +77,20 @@
                     <?php endif; ?>
                 </div> <!-- /like-row -->
 
-                <ul class="commentList" data-id="8238238">
+                <ul class="commentList">
 
                     <?php $comments = getAllComments($post['id'], $pdo) ?>
                     <?php foreach ($comments as $comment) : ?>
 
-                        <li><?php echo $comment['email'] . ': ' . $comment['comment']; ?></li>
+                        <li class="commentRow">
+                            <p> <?php echo $comment['email'] . ': ' . $comment['comment']; ?></p>
+                            <?php if ($_SESSION['user']['id'] == $comment['user_id']) : ?>
+                                <button class="deleteButton" data-id="<?php echo $comment['id']; ?>"> Delete </button>
+                            <?php endif; ?>
+                        </li>
 
-                        <!-- <?php if ($_SESSION['user']['id'] == $comment['user_id']) : ?>
-                            <button class="deleteButton"> Delete </button>
-                        <?php endif; ?> -->
+
+
 
                     <?php endforeach;  ?>
                 </ul>
@@ -115,63 +119,5 @@
     </article> <!-- /feed -->
 <?php endif; ?>
 <!-- endif loggedIn -->
-
-<script>
-    const posts = document.querySelectorAll('.post-wrapper');
-    posts.forEach(post => {
-
-        const commentsForm = post.querySelector('.commentsForm');
-        const commentsList = post.querySelector('.commentList');
-
-        commentsForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(commentsForm);
-
-            fetch('http://localhost:1337/app/comments/store.php', {
-
-                method: 'POST',
-                body: formData
-
-            }).then(function(response) {
-                return response.json();
-            }).then(function(response) {
-
-
-                const listItem = document.createElement('li');
-
-                const deleteButton = document.createElement('button');
-
-                const commentInput = commentsForm.querySelector('.commentInput');
-
-                commentInput.value = '';
-
-                listItem.textContent = response.userEmail + ': ' + response.comment;
-                commentsList.appendChild(listItem);
-                listItem.appendChild(deleteButton)
-                deleteButton.textContent = "Delete";
-
-                deleteButton.classList.add("deleteButton");
-
-                deleteButton.setAttribute("data-id", response.id);
-
-                console.log(deleteButton);
-
-                deleteButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(deleteButton);
-                    fetch('http://localhost:1337/app/comments/delete.php?id=' + deleteButton.id, {
-
-                        method: 'GET',
-                        body: formData
-
-                    }).catch(function(error) {
-                        console.log(error);
-                    })
-                });
-            })
-        })
-    });
-</script>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

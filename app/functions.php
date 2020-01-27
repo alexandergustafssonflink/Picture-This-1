@@ -130,6 +130,32 @@ function getAllComments(int $postId, pdo $pdo)
     return $comments;
 }
 
+
+function getSearchResult(string $searchTerm, pdo $pdo)
+{
+
+    $sql = "SELECT * FROM user WHERE email LIKE :searchTerm";
+
+    $statement = $pdo->prepare($sql);
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $searchTerm = "%" . $searchTerm . "%";
+
+    $statement->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
+
+    $statement->execute();
+
+    $searchResult = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($searchResult == FALSE) {
+        return FALSE;
+    } else {
+        return $searchResult;
+    }
+}
+
 //function getLastThreeComments(int $postId, pdo $pdo)
 // {
 //     $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date DESC LIMIT 3');

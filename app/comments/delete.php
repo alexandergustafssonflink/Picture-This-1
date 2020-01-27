@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // FETCHES COMMENT
-    $statement = $pdo->prepare('SELECT * FROM post_comments WHERE id = :id');
+    $statement = $pdo->prepare('SELECT * FROM comment WHERE id = :id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
     $comment = $statement->fetch();
 
     // DELETES COMMENT
-    $sql = "DELETE from post_comments WHERE id = :id";
+    $sql = "DELETE from comment WHERE id = :id";
     $statement = $pdo->prepare($sql);
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
