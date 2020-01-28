@@ -24,16 +24,17 @@ posts.forEach(post => {
                     ".commentInput"
                 );
 
+                const commentAuthor = document.createElement("p");
                 const comment = document.createElement("p");
 
                 comment.classList.add("comment");
 
                 commentInput.value = "";
-
-                comment.textContent =
-                    response.userEmail + ": " + response.comment;
+                commentAuthor.textContent = response.userEmail;
+                comment.textContent = response.comment;
                 commentsList.appendChild(listItem);
                 listItem.classList.add("commentRow");
+                listItem.appendChild(commentAuthor);
                 listItem.appendChild(comment);
                 listItem.appendChild(deleteButton);
 
@@ -78,6 +79,52 @@ deleteButtons.forEach(button => {
             })
             .then(function(res) {
                 var comment = e.srcElement.parentElement.remove();
+            });
+    });
+});
+
+// editButton.textContent = "Edit";
+// editButton.classList.add("editButton");
+
+editButtons = document.querySelectorAll(".editButton");
+// editButton.setAttribute("data-id", response.id);
+
+editButtons.forEach(editButton => {
+    editButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        const editForm = e.target.parentElement.querySelector("form");
+        editForm.classList.toggle("hidden");
+
+        const comment = e.target.parentElement.querySelector(".comment")
+            .textContent;
+
+        editForm.querySelector("input").value = comment;
+    });
+});
+
+updateForms = document.querySelectorAll(".updateForm");
+
+updateForms.forEach(updateForm => {
+    updateForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const comment = e.target.parentElement.querySelector(".comment");
+
+        const formData = new FormData(updateForm);
+        const editForm = e.target.parentElement.querySelector("form");
+        editForm.classList.toggle("hidden");
+
+        fetch("http://localhost:1337/app/comments/update.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                const comment = e.target.parentElement.querySelector(
+                    ".comment"
+                );
+                comment.textContent = json;
             });
     });
 });

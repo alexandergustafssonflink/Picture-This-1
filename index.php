@@ -83,10 +83,18 @@
                     <?php foreach ($comments as $comment) : ?>
 
                         <li class="commentRow">
-                            <p> <?php echo $comment['email'] . ': ' . $comment['comment']; ?></p>
+                            <p class="commentAuthor"> <?php echo $comment['email'];  ?></p>
+                            <p class="comment"> <?php echo $comment['comment']; ?> </p>
                             <?php if ($_SESSION['user']['id'] == $comment['user_id']) : ?>
+                                <button class="editButton" type="submit">Edit</button>
+                                <form class="updateForm hidden" action="">
+                                    <input name="content" type="text">
+                                    <input name="id" value="<?php echo $comment['id']; ?>" type="hidden">
+                                    <button type="submit" class="updateComment">Update</button>
+                                </form>
                                 <button class="deleteButton" data-id="<?php echo $comment['id']; ?>"> Delete </button>
                             <?php endif; ?>
+
                         </li>
 
 
