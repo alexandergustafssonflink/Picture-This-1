@@ -1,9 +1,10 @@
 <?php
 // Always start by loading the default application setup.
-require __DIR__.'/../app/autoload.php';
+require __DIR__ . '/../app/autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +20,10 @@ require __DIR__.'/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/myaccount.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/edit-post.css">
+    <link rel="stylesheet" href="/assets/styles/comment.css">
+    <link rel="stylesheet" href="/assets/styles/search-user.css">
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:400,600,700|Open+Sans:400,600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">

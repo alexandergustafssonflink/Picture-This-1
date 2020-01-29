@@ -1,0 +1,11 @@
+.search-wrapper {
+    margin: 15px;
+}
+
+.searchResult {
+    margin: 10px;
+}
+
+.searchResult :hover {
+    border-bottom: solid black;
+}

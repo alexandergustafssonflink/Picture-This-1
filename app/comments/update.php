@@ -32,7 +32,7 @@ if (isset($_POST['content'], $_POST['id'])) {
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
     $comment = $statement->fetch();
-
+    $pdo->lastInsertId();
 
     echo json_encode($comment['comment']);
     exit;

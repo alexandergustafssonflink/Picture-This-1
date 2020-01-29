@@ -19,6 +19,7 @@ posts.forEach(post => {
                 const listItem = document.createElement("li");
 
                 const deleteButton = document.createElement("button");
+                // const editButton = document.createElement("button");
 
                 const commentInput = commentsForm.querySelector(
                     ".commentInput"
@@ -31,6 +32,7 @@ posts.forEach(post => {
 
                 commentInput.value = "";
                 commentAuthor.textContent = response.userEmail;
+                commentAuthor.classList.add("commentAuthor");
                 comment.textContent = response.comment;
                 commentsList.appendChild(listItem);
                 listItem.classList.add("commentRow");
@@ -83,11 +85,7 @@ deleteButtons.forEach(button => {
     });
 });
 
-// editButton.textContent = "Edit";
-// editButton.classList.add("editButton");
-
 editButtons = document.querySelectorAll(".editButton");
-// editButton.setAttribute("data-id", response.id);
 
 editButtons.forEach(editButton => {
     editButton.addEventListener("click", function(e) {

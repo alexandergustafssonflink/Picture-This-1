@@ -27,19 +27,20 @@ if (!isset($_SESSION['user'])) {
                 $searchresults = getSearchResult($searchTerm, $pdo);
                 ?>
 
-                <div class="searchResult">
+                <div class="searchResults">
 
                     <h2>Search results... </h2>
 
                     <?php if ($searchresults !== FALSE) : ?>
 
                         <?php foreach ($searchresults as $result) : ?>
-                            <h3> <?php echo $result['email']; ?></h3>
+                            <h3 class="searchResult"><a href="/account.php?id=<?php echo $result['id']; ?>"><?php echo $result['email']; ?></h3></a>
+
 
                         <?php endforeach; ?>
 
                     <?php else : ?>
-                        <h3>Sorry, not match was found </h3>
+                        <h3>Sorry, no match was found </h3>
                     <?php endif; ?>
 
 

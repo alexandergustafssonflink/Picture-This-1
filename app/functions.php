@@ -156,14 +156,17 @@ function getSearchResult(string $searchTerm, pdo $pdo)
     }
 }
 
-//function getLastThreeComments(int $postId, pdo $pdo)
-// {
-//     $statement = $pdo->prepare('SELECT comment.*, user.email FROM comment INNER JOIN user ON comment.user_id = user.id WHERE post_id = :postId ORDER BY date DESC LIMIT 3');
-//     if (!$statement) {
-//         die(var_dump($pdo->errorInfo()));
-//     }
-//     $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
-//     $statement->execute();
-//     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
-//     return $comments;
-// }
+function getAllPostsByUser(int $userId, pdo $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM post INNER JOIN user ON post.user_id = user.id INNER JOIN image ON post.image_id = image.id WHERE post.user_id = :userId');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $statement->execute();
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($posts) {
+        return $posts;
+    }
+}

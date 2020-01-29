@@ -1,0 +1,29 @@
+.deleteButton {
+    width: 60px;
+}
+
+.editButton {
+    width: 60px;
+}
+
+.commentRow {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.commentsForm {
+    margin-left: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.commentAuthor {
+    font-weight: bold;
+}
+.commentRow {
+    margin-top: 10px;
+}
