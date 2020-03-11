@@ -4,8 +4,8 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 
 
-if($_SESSION['user'] && isset($_FILES['profile-img'])){
-    if($_FILES['profile-img']['error'] === 0){
+if ($_SESSION['user'] && isset($_FILES['profile-img'])) {
+    if ($_FILES['profile-img']['error'] === 0) {
         //array storing name type tmp_name error and size about uploaded file
         $avatar = $_FILES['profile-img'];
         $id = $_SESSION['user']['id'];
@@ -28,20 +28,15 @@ if($_SESSION['user'] && isset($_FILES['profile-img'])){
         $stmnt->execute();
         $image=$stmnt->fetch(PDO::FETCH_ASSOC);
                 
-        //update user.image_id 
+        //update user.image_id
         $statement=$pdo->prepare("UPDATE user SET image_id = :imageid WHERE id = :id");
         $statement->bindParam(':imageid', $image['id'], PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();
-    }
-
-    else if($_FILES['profile-img']['error'] === 1){
+    } elseif ($_FILES['profile-img']['error'] === 1) {
         $_SESSION['error'] = "The file is to big to upload.";
         redirect('/../../myaccount.php');
-        
-    }
-
-    else if($_FILES['profile-img']['error'] === 4){
+    } elseif ($_FILES['profile-img']['error'] === 4) {
         $_SESSION['error'] = "You didn't choose a file before upload.";
         redirect('/../../myaccount.php');
     }

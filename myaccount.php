@@ -1,17 +1,17 @@
-<?php require __DIR__.'/views/header.php'; 
+<?php require __DIR__.'/views/header.php';
 
-if (!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     redirect('/');
 } else {
     require __DIR__.'/app/parse.php';
-    require __DIR__.'/views/navigation.php'; 
+    require __DIR__.'/views/navigation.php';
     $imageId = (int) $user['image_id'];
     $avatar = getAvatarbyId($imageId, $pdo);
 }
 ?>
     
 <article class= "edit-wrapper">
-    <?php if(isset($_SESSION['error'])):?>
+    <?php if (isset($_SESSION['error'])):?>
         <p class="error-message"><?php echo $_SESSION['error']; ?></p>
         <?php unset($_SESSION['error']);?>
     <?php endif;?>

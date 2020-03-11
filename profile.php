@@ -1,22 +1,22 @@
-<?php require __DIR__.'/views/header.php'; 
+<?php require __DIR__.'/views/header.php';
 
-if (!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     redirect('/');
 } else {
     require __DIR__.'/app/parse.php';
-    require __DIR__.'/views/navigation.php'; 
+    require __DIR__.'/views/navigation.php';
 }
 ?>
 
-<?php if(isset($_POST['author_id'])): ?>
-    <?php 
+<?php if (isset($_POST['author_id'])): ?>
+    <?php
     $userId = (int) $user['id'];
-    $chosenUserId = (int) filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT); 
+    $chosenUserId = (int) filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT);
     $chosenUser = getUserById($chosenUserId, $pdo);
     $imageId = $chosenUser['image_id'];
 
     /* if the user has an avatar the imageId has an int */
-    if($imageId) {
+    if ($imageId) {
         $avatar = getAvatarbyId($imageId, $pdo);
     }
     $followers = countFollowers($chosenUserId, $pdo);
@@ -25,17 +25,17 @@ if (!isset($_SESSION['user'])){
     ?>
     <article class="profile-wrapper">
         <div class="profile-content">
-            <?php if($imageId): ?>
+            <?php if ($imageId): ?>
                 <img src="<?php echo "/app/users/uploads/".$avatar['data'];?>" alt="avatar-image" class="avatar" loading="lazy">
             <?php endif; ?>
 
             <p><?php echo $chosenUser['email']; ?></p>
 
-            <?php if($followers === 0): ?>
+            <?php if ($followers === 0): ?>
                 <p class="followers">Waiting for followers!</p>
-            <?php elseif($followers === 1): ?>
+            <?php elseif ($followers === 1): ?>
                 <p class="followers"><?php echo $followers ; ?> follower</p>
-            <?php elseif($followers > 1): ?>
+            <?php elseif ($followers > 1): ?>
                 <p class="followers"><?php echo $followers ; ?> followers</p>
             <?php endif;?>
 

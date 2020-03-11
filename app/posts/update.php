@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 require __DIR__.'/../parse.php';
 
-if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])){
+if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])) {
     $description = $_POST['description'];
     //array storing name, type, tmp_name, error and size about uploaded file
     $newImage = $_FILES['edit-post-image'];
@@ -21,33 +21,30 @@ if (isset($_GET['id'], $_POST['description'], $_FILES['edit-post-image'])){
 
     $_SESSION['success'] = 'Your description was successfully updated';
 
-    if($_FILES['edit-post-image']['error'] === 0){
-            //create a unique fileName, ends with type jpg or other
-            $fileName = uniqid().($newImage['name']);
-            $destination = __DIR__.'/uploads/'.$fileName;
-            move_uploaded_file($newImage['tmp_name'], $destination);
+    if ($_FILES['edit-post-image']['error'] === 0) {
+        //create a unique fileName, ends with type jpg or other
+        $fileName = uniqid().($newImage['name']);
+        $destination = __DIR__.'/uploads/'.$fileName;
+        move_uploaded_file($newImage['tmp_name'], $destination);
             
-            // Removes the previous image from the uploads folder
-            if($newImage['name'] !== ''){
+        // Removes the previous image from the uploads folder
+        if ($newImage['name'] !== '') {
             unlink(__DIR__.'/uploads/'.$lastImage);
-            }
+        }
                 
-            //update image data in image table
-            $statement=$pdo->prepare("UPDATE image SET data = :filename WHERE id = :imageId");
-            $statement->bindParam(':filename', $fileName, PDO::PARAM_STR);
-            $statement->bindParam(':imageId', $imageId, PDO::PARAM_STR);
-            $statement->execute();
+        //update image data in image table
+        $statement=$pdo->prepare("UPDATE image SET data = :filename WHERE id = :imageId");
+        $statement->bindParam(':filename', $fileName, PDO::PARAM_STR);
+        $statement->bindParam(':imageId', $imageId, PDO::PARAM_STR);
+        $statement->execute();
 
-            $_SESSION['success'] = 'Your image was successfully updated';
-            redirect("/edit-post.php?id=".$postId);
-
-        } else {
-            $_SESSION['error'] = "There was an error uploading your image.";
-            redirect("/edit-post.php?id=".$postId) ;
-    } 
+        $_SESSION['success'] = 'Your image was successfully updated';
+        redirect("/edit-post.php?id=".$postId);
+    } else {
+        $_SESSION['error'] = "There was an error uploading your image.";
+        redirect("/edit-post.php?id=".$postId) ;
+    }
 }
 
 
 redirect("/edit-post.php?id=".$postId);
-
-

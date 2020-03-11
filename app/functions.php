@@ -133,7 +133,6 @@ function getAllComments(int $postId, pdo $pdo)
 
 function getSearchResult(string $searchTerm, pdo $pdo)
 {
-
     $sql = "SELECT * FROM user WHERE email LIKE :searchTerm";
 
     $statement = $pdo->prepare($sql);
@@ -149,8 +148,8 @@ function getSearchResult(string $searchTerm, pdo $pdo)
 
     $searchResult = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($searchResult == FALSE) {
-        return FALSE;
+    if ($searchResult == false) {
+        return false;
     } else {
         return $searchResult;
     }

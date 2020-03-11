@@ -9,7 +9,6 @@ header('Content-Type: application/json');
 $user = $_SESSION['user'];
 
 if (isset($_POST['content'], $_POST['id'])) {
-
     $content = trim(filter_var($_POST['content'], FILTER_SANITIZE_STRING));
     $id = $_POST['id'];
 

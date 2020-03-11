@@ -6,7 +6,7 @@
         <h1><?php echo $config['title']; ?></h1>
         </a>
         <p>Sign up to see photos from your friends</p>
-        <?php if(isset($_SESSION['error'])):?>
+        <?php if (isset($_SESSION['error'])):?>
             <p class="error-message"><?php echo $_SESSION['error']; ?></p>
         <?php unset($_SESSION['error']);?>
 <?php endif ;?>

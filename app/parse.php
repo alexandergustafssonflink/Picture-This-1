@@ -22,4 +22,3 @@ if (!$statement) {
 }
 $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-

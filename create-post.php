@@ -1,14 +1,14 @@
-<?php require __DIR__.'/views/header.php'; 
+<?php require __DIR__.'/views/header.php';
 
-if (!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     redirect('/');
 } else {
-    require __DIR__.'/views/navigation.php'; 
+    require __DIR__.'/views/navigation.php';
 }
 ?>
 
 <form action="app/posts/store.php" method="post" enctype="multipart/form-data" class="postform-wrapper">
-    <?php if(isset($_SESSION['error'])):?>
+    <?php if (isset($_SESSION['error'])):?>
         <p class="error-message"><?php echo $_SESSION['error']; ?></p>
         <?php unset($_SESSION['error']);?>
     <?php endif;?>

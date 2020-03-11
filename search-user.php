@@ -31,7 +31,7 @@ if (!isset($_SESSION['user'])) {
 
                     <h2>Search results... </h2>
 
-                    <?php if ($searchresults !== FALSE) : ?>
+                    <?php if ($searchresults !== false) : ?>
 
                         <?php foreach ($searchresults as $result) : ?>
                             <h3 class="searchResult"><a href="/account.php?id=<?php echo $result['id']; ?>"><?php echo $result['email']; ?></h3></a>
